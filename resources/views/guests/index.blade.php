@@ -85,7 +85,7 @@
                 </div>
 
                 <div class="links">
-                    <a href="{{route('guests.posts.index')}}">Visualizza posts</a>
+                    <a href="{{route('posts.index')}}">Visualizza posts</a>
                 </div>
             </div>
         </div>
