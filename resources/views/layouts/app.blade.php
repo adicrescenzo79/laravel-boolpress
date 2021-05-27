@@ -60,6 +60,10 @@
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
+                                    <a class="dropdown-item" href="{{route('admin.index')}}">Dashboard</a>
+                                    <a class="dropdown-item" href="{{route('admin.posts.index')}}">I tuoi post</a>
+                                    <a class="dropdown-item" href="{{route('admin.categories.index')}}">Le tue categorie</a>
+
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf

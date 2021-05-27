@@ -3,14 +3,6 @@
 @section('content')
   <div class="container">
     <div class="row justify-content-center">
-      <div class="col-md-8">
-        <a href="{{route('admin.posts.create')}}">
-          <button class="btn btn-primary" type="button" name="button">
-            Nuovo
-          </button>
-
-        </a>
-      </div>
     </div>
     <div class="row justify-content-center">
       @foreach ($posts as $post)

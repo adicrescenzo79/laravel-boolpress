@@ -6,7 +6,12 @@
 
         <div class="col-md-6">
 
-          <h3>{{$post->title}}</h3>
+          <h1>{{$post->title}}</h1>
+            @if ($post->category)
+              <h4>Categoria:
+              <a href="{{ route('category.index', ['slug' => $post->category->slug])}}">{{$post->category->name}}</a>
+            @endif
+          </h4>
 
           <p>{{$post->content}}</p>
 
