@@ -6,9 +6,13 @@
 
         <div class="col-md-6">
 
-          <h1>{{$post->title}}</h1>
+          <h1 class="text-capitalize">{{$post->title}}</h1>
           @if ($post->category)
-            <h4>Categoria: {{$post->category->name}}</h4>
+            <h4>Categoria: <span class="text-uppercase"> {{$post->category->name}}</span></h4>
+          @endif
+
+          @if ($post->cover)
+            <img src="{{asset($post->cover)}}" alt="{{$post->title}}">
           @endif
 
           <p>{{$post->content}}</p>

@@ -16,7 +16,7 @@
                 @endif
 
                 {{ __('You are logged in!') }}
-                <ul>
+                {{-- <ul>
                   <li>
                     <a href="{{route('admin.posts.index')}}">Visualizza i tuoi post</a>
 
@@ -24,7 +24,7 @@
                   <li>
                     <a href="{{'/'}}">Torna indietro</a>
                   </li>
-                </ul>
+                </ul> --}}
               </div>
           </div>
         </div>

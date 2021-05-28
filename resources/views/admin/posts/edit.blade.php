@@ -12,7 +12,7 @@
     <div class="row justify-content-center">
 
         <div class="col-md-8">
-          <form class="" action="{{route('admin.posts.update', ['post' => $post->id])}}" method="post">
+          <form enctype="multipart/form-data"  class="" action="{{route('admin.posts.update', ['post' => $post->id])}}" method="post">
             @csrf
             @method('PATCH')
 
@@ -45,6 +45,26 @@
               @enderror
 
             </div>
+
+            @if ($post->cover)
+
+              <div class="">
+                <img src="{{asset($post->cover)}}" alt="">
+                <small class="text-danger">Attuale</small>
+              </div>
+            @endif
+
+
+
+            <div class="form-group">
+              <label for="cover">Cover</Cabel>
+                <input class="form-control-file @error('cover') is-invalid @enderror" id="cover" type="file" name="cover" value="">
+              @error('cover')
+                <small class="text-danger">{{ $message }}</small>
+              @enderror
+
+            </div>
+
 
             <button type="submit" class="btn btn-primary" name="button">Salva</button>
 

@@ -6,7 +6,7 @@
       <div class="col-md-8">
         <a href="{{route('admin.posts.create')}}">
           <button class="btn btn-primary" type="button" name="button">
-            Nuovo
+            Scrivi un nuovo post
           </button>
 
         </a>
@@ -16,10 +16,10 @@
       @foreach ($posts as $post)
 
         <div class="col-md-3">
-          <div class="card">
+          <div class="card mt-3">
             <div class="card-header">
 
-              <a class="mr-5" href="{{route('admin.posts.show', ['post' => $post->id])}}">
+              <a class="mr-5 text-capitalize" href="{{route('admin.posts.show', ['post' => $post->id])}}">
                 {{ $post->title }}
               </a>
             </div>

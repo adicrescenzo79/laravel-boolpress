@@ -6,10 +6,10 @@
 
         <div class="col-md-6">
 
-          <h1>{{$post->title}}</h1>
+          <h1 class="text-capitalize">{{$post->title}}</h1>
             @if ($post->category)
               <h4>Categoria:
-              <a href="{{ route('category.index', ['slug' => $post->category->slug])}}">{{$post->category->name}}</a>
+              <a class="text-uppercase" href="{{ route('category.index', ['slug' => $post->category->slug])}}">{{$post->category->name}}</a>
             @endif
           </h4>
 

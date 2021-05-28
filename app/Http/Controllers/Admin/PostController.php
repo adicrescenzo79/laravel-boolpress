@@ -6,8 +6,11 @@ use App\Post;
 use App\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Mail\SendNewMail;
 
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Mail;
 
 class PostController extends Controller
 {
@@ -47,17 +50,28 @@ class PostController extends Controller
         'category_id' => 'exists:categories,id|nullable',
         'title' => 'required|string|max:255',
         'content' => 'required|string',
+        'cover' => 'nullable|image|max:6000',
       ]);
 
       $data = $request->all();
 
+      $cover = NULL;
+      if (array_key_exists('cover', $data)) {
+        $cover = Storage::put('uploads', $data['cover']);
+      }
+
+
       $post = new Post();
       $post->fill($data);
 
+      // dd($cover);
+
 
       $post->slug = $this->generateSlug($post->title);
-
+      $post->cover = 'storage/' . $cover;
       $post->save();
+
+      Mail::to('nail@mail.it')->send(new SendNewMail());
 
       return redirect()->route('admin.posts.index');
     }
@@ -99,11 +113,23 @@ class PostController extends Controller
         'category_id' => 'exists:categories,id|nullable',
         'title' => 'required|string|max:255',
         'content' => 'required|string',
+        'cover' => 'nullable|image|max:6000',
+
       ]);
 
       $data = $request->all();
 
-      $data['slug'] = $this->generateSlug($data['title'], $post->title != $data['title']);
+      // qui va fatta la creazione dell'immagine
+
+      $data['slug'] = $this->generateSlug($data['title'], $post->title != $data['title'], $post->slug);
+
+      if (array_key_exists('cover', $data)) {
+        $cover = Storage::put('uploads', $data['cover']);
+      }
+
+      $data['cover'] = 'storage/' . $cover;
+
+
       $post->update($data);
 
 
