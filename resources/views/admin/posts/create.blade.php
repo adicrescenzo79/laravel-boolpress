@@ -24,7 +24,7 @@
                   <option value="{{$category->id}}">{{$category->name}}</option>
                 @endforeach
               </select>
-              @error('title')
+              @error('name')
                 <small class="text-danger">{{ $message }}</small>
               @enderror
             </div>
@@ -54,6 +54,22 @@
               @enderror
 
             </div>
+
+            <div class="form-group">
+              <label for="tags">Tags</label> <br>
+                @foreach ($tags as $tag)
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input @error('tag_ids') is-invalid @enderror" type="checkbox" name="tag_ids[]" value="{{$tag->id}}" id="{{$tag->id}}">
+                    <label class="form-check-label" for="{{$tag->id}}">
+                      #{{$tag->name}}
+                    </label>
+                  </div>
+                  @error('tag_ids')
+                    <small class="text-danger">{{ $message }}</small>
+                  @enderror
+                @endforeach
+            </div>
+
 
 
             <button type="submit" class="btn btn-primary" name="button">Salva</button>

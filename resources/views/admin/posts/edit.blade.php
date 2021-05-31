@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-  <div class="container">
+  <div class="container main-admin-post-edit">
     <div class="row justify-content-center">
       <div class="col-md-8">
         <h3>Modifica Post</h3>
@@ -46,17 +46,17 @@
 
             </div>
 
-            @if ($post->cover)
-
-              <div class="">
-                <img src="{{asset($post->cover)}}" alt="">
-                <small class="text-danger">Attuale</small>
-              </div>
-            @endif
 
 
 
             <div class="form-group">
+              @if ($post->cover)
+                <div class="">
+                  <img class="cover" src="{{asset($post->cover)}}" alt="">
+                  <small class="text-danger">Attuale</small>
+                </div>
+              @endif
+
               <label for="cover">Cover</Cabel>
                 <input class="form-control-file @error('cover') is-invalid @enderror" id="cover" type="file" name="cover" value="">
               @error('cover')
@@ -65,6 +65,20 @@
 
             </div>
 
+            <div class="form-group">
+              <label for="tags">Tags</label> <br>
+                @foreach ($tags as $tag)
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input @error('tag_ids') is-invalid @enderror" type="checkbox" name="tag_ids[]" value="{{$tag->id}}" id="{{$tag->id}}" {{$post->tags->contains($tag) ? 'checked' : ''}}>
+                    <label class="form-check-label" for="{{$tag->id}}">
+                      #{{$tag->name}}
+                    </label>
+                  </div>
+                  @error('tag_ids')
+                    <small class="text-danger">{{ $message }}</small>
+                  @enderror
+                @endforeach
+            </div>
 
             <button type="submit" class="btn btn-primary" name="button">Salva</button>
 

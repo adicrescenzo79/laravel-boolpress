@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-  <div class="container">
+  <div class="container main-admin-post-show">
     <div class="row justify-content-center">
 
         <div class="col-md-6">
@@ -12,10 +12,16 @@
           @endif
 
           @if ($post->cover)
-            <img src="{{asset($post->cover)}}" alt="{{$post->title}}">
+            <img class="cover" src="{{asset($post->cover)}}" alt="{{$post->title}}">
           @endif
 
           <p>{{$post->content}}</p>
+
+          @if ($post->tags)
+            @foreach ($tags as $tag)
+              <small>#{{$tag->name}}</small>
+            @endforeach
+          @endif
 
           <div class="row justify-content-center">
             <a href="{{route('admin.posts.index')}}">

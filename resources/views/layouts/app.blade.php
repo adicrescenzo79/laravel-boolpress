@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'BoolPress') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -63,6 +63,8 @@
                                     <a class="dropdown-item" href="{{route('admin.index')}}">Dashboard</a>
                                     <a class="dropdown-item" href="{{route('admin.posts.index')}}">I tuoi post</a>
                                     <a class="dropdown-item" href="{{route('admin.categories.index')}}">Le tue categorie</a>
+                                    <a class="dropdown-item" href="{{route('admin.tags.index')}}">I tuoi tag</a>
+
 
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

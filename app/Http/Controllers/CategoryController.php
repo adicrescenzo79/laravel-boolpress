@@ -12,9 +12,6 @@ class CategoryController extends Controller
     // stampare tutti i post di una data Categoria
     $category = Category::with('posts')->where('slug', '=', $slug)->first();
 
-
-
     return view('guests.posts.index')->with('posts', $category->posts);
-
   }
 }
